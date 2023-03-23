@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS acl_entry (
                                          PRIMARY KEY (id)
 );
 
-
 ALTER TABLE acl_entry
 ADD FOREIGN KEY (acl_object_identity) REFERENCES acl_object_identity(id);
 
