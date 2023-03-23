@@ -1,24 +1,24 @@
 CREATE TABLE IF NOT EXISTS DOCUMENT (
-    id integer not null,
+    id SERIAL not null,
     content varchar(255),
     primary key (id)
 );
 
 CREATE TABLE IF NOT EXISTS acl_sid (
-  id bigint NOT NULL,
+  id SERIAL NOT NULL,
   principal int NOT NULL,
   sid varchar(100) NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS acl_class (
-  id bigint NOT NULL,
+  id SERIAL NOT NULL,
   class varchar(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS acl_object_identity (
-  id bigint NOT NULL,
+  id SERIAL NOT NULL,
   object_id_class bigint NOT NULL,
   object_id_identity bigint NOT NULL,
   parent_object bigint DEFAULT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS acl_object_identity (
 );
 
 CREATE TABLE IF NOT EXISTS acl_entry (
-                                         id bigint NOT NULL,
+                                         id SERIAL NOT NULL,
                                          acl_object_identity bigint NOT NULL,
                                          ace_order int NOT NULL,
                                          sid bigint NOT NULL,

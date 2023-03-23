@@ -10,7 +10,6 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Document implements IEntity {
 
     @Id
@@ -20,5 +19,10 @@ public class Document implements IEntity {
 
     public Document(String content) {
         this.content=content;
+    }
+
+    public Document(Integer id, String content) {
+        this.id = id;
+        this.content = content;
     }
 }
