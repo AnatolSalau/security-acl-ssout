@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.sysout.model.Document;
+import ru.sysout.repository.DocumentRepository;
 
 import java.util.Arrays;
 
@@ -26,6 +27,8 @@ public class DocumentControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private DocumentRepository documentRepository;
 
     @Test
     @WithMockUser(username = "user1")
@@ -115,6 +118,11 @@ public class DocumentControllerTest {
 
     }
 
+    @Test
+    public void saveDocumentTest() {
+        Document d4=new Document(4, "Document 4");
+        documentRepository.save(d4);
+    }
 
     @Test
     @WithMockUser(authorities = { "ROLE_ADMIN" })
@@ -127,6 +135,5 @@ public class DocumentControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(d4)));
-
     }
 }
